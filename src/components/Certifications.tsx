@@ -7,30 +7,35 @@ const certifications = [
     issuer: "WISER, Qubitech & Amaravati Quantum Valley",
     date: "Feb 2026",
     description: "4-week program on quantum computing fundamentals",
+    link: null,
   },
   {
     title: "AI Research Internship Completion",
     issuer: "GoldLighT Technologies Pvt. Ltd.",
     date: "Nov 2025",
     description: "AI/ML research, model experimentation, and implementation",
+    link: null,
   },
   {
     title: "AI Associate",
     issuer: "Salesforce Certified",
     date: "Oct 2024",
     description: "Certified in Salesforce AI technologies",
+    link: "https://www.salesforce.com/trailblazer/aakashprathipati",
   },
   {
     title: "Multicloud Network Associate",
     issuer: "Aviatrix",
     date: "Jan 2025",
     description: "Multi-cloud networking and orchestration",
+    link: "https://www.credly.com/badges/1f28e2bb-edba-4d86-9fc9-f23eb65a772b/linked_in",
   },
   {
     title: "Essential Automation Professional",
     issuer: "Automation Anywhere",
     date: "Jul 2025",
     description: "Enterprise automation and RPA certification",
+    link: "https://certificates.automationanywhere.com/37aae1ab-3b31-4d4d-b6d1-f7220b1a0792#acc.JzOA8UNd",
   },
 ];
 
@@ -77,7 +82,19 @@ const Certifications = () => {
                 
                 <h3 className="text-lg font-bold mb-1">{cert.title}</h3>
                 <p className="text-primary text-sm mb-2">{cert.issuer}</p>
-                <p className="text-muted-foreground text-sm">{cert.description}</p>
+                <p className="text-muted-foreground text-sm mb-3">{cert.description}</p>
+                
+                {cert.link && (
+                  <a 
+                    href={cert.link} 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1 text-xs text-primary hover:text-primary/80 transition-colors"
+                  >
+                    <ExternalLink className="h-3 w-3" />
+                    Verify Credential
+                  </a>
+                )}
               </div>
             </motion.div>
           ))}

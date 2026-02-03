@@ -23,7 +23,7 @@ const Hero = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.2 }}
-              className="text-primary font-mono text-sm tracking-wider"
+              className="text-primary font-mono text-xl md:text-2xl tracking-wider"
             >
               Hello, I'm
             </motion.p>
@@ -103,21 +103,13 @@ const Hero = () => {
                 />
               </div>
               
-              {/* Floating badges */}
+              {/* Floating badge */}
               <motion.div
                 animate={{ y: [0, -10, 0] }}
                 transition={{ repeat: Infinity, duration: 3 }}
-                className="absolute -top-4 -right-4 bg-card border border-border rounded-lg px-4 py-2 shadow-lg"
+                className="absolute -top-4 -right-4 bg-card border border-border rounded-lg px-4 py-2 shadow-lg z-0"
               >
                 <p className="text-sm font-semibold text-primary">AI/ML</p>
-              </motion.div>
-              
-              <motion.div
-                animate={{ y: [0, 10, 0] }}
-                transition={{ repeat: Infinity, duration: 3, delay: 0.5 }}
-                className="absolute -bottom-4 -left-4 bg-card border border-border rounded-lg px-4 py-2 shadow-lg"
-              >
-                <p className="text-sm font-semibold text-accent">Cybersecurity</p>
               </motion.div>
             </div>
           </motion.div>
