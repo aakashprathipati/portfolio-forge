@@ -94,12 +94,12 @@ const Hero = () => {
               {/* Glow effect */}
               <div className="absolute inset-0 bg-gradient-primary rounded-full blur-2xl opacity-30 scale-110" />
               
-              {/* Image container - more zoomed in */}
-              <div className="relative w-72 h-72 md:w-96 md:h-96 rounded-full overflow-hidden border-4 border-primary/30 glow">
+              {/* Image container */}
+              <div className="relative w-56 h-56 md:w-72 md:h-72 rounded-full overflow-hidden border-4 border-primary/30 glow">
                 <img
                   src={profilePhoto}
                   alt="Aakash Prathipati"
-                  className="w-full h-full object-cover object-top scale-125"
+                  className="w-full h-full object-cover object-top"
                 />
               </div>
             </div>

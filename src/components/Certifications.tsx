@@ -3,20 +3,6 @@ import { Award, ExternalLink, Calendar } from "lucide-react";
 
 const certifications = [
   {
-    title: "Quantum Fundamentals Program",
-    issuer: "WISER, Qubitech & Amaravati Quantum Valley",
-    date: "Feb 2026",
-    description: "4-week program on quantum computing fundamentals",
-    link: null,
-  },
-  {
-    title: "AI Research Internship Completion",
-    issuer: "GoldLighT Technologies Pvt. Ltd.",
-    date: "Nov 2025",
-    description: "AI/ML research, model experimentation, and implementation",
-    link: null,
-  },
-  {
     title: "AI Associate",
     issuer: "Salesforce Certified",
     date: "Oct 2024",
