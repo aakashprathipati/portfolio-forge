@@ -5,7 +5,6 @@ import {
   Cloud, 
   Database, 
   Code2, 
-  Layers, 
   TrendingUp 
 } from "lucide-react";
 
@@ -25,39 +24,32 @@ const skills = [
     bgColor: "bg-accent/10",
   },
   {
-    icon: Layers,
-    title: "Blockchain & Web3",
-    description: "Smart contract ecosystems, decentralized frameworks, cryptographic protocols",
-    color: "text-primary",
-    bgColor: "bg-primary/10",
-  },
-  {
     icon: Cloud,
     title: "Cloud Computing",
     description: "Multi-cloud orchestration, containerized environments, serverless deployments",
-    color: "text-accent",
-    bgColor: "bg-accent/10",
+    color: "text-primary",
+    bgColor: "bg-primary/10",
   },
   {
     icon: Database,
     title: "Data Science",
     description: "Predictive intelligence, large-scale data processing, decision-driven insights",
-    color: "text-primary",
-    bgColor: "bg-primary/10",
+    color: "text-accent",
+    bgColor: "bg-accent/10",
   },
   {
     icon: Code2,
     title: "Systems Engineering",
     description: "Scalable architectures, distributed systems, cross-platform solutions",
-    color: "text-accent",
-    bgColor: "bg-accent/10",
+    color: "text-primary",
+    bgColor: "bg-primary/10",
   },
   {
     icon: TrendingUp,
     title: "Techno-Business Strategy",
     description: "Digital transformation roadmaps, innovation frameworks, product lifecycle",
-    color: "text-primary",
-    bgColor: "bg-primary/10",
+    color: "text-accent",
+    bgColor: "bg-accent/10",
   },
 ];
 
