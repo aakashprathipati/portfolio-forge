@@ -1,6 +1,7 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { Briefcase, Calendar, ExternalLink } from "lucide-react";
 import { useRef } from "react";
+import internshipCert from "@/assets/internship-cert.png";
 
 const experiences = [
   {
@@ -20,7 +21,7 @@ const experiences = [
         "Reduced processing time by 60% through model optimization",
         "Published internal research paper on semantic segmentation techniques"
       ],
-      certificateLink: null,
+      certificateImage: internshipCert,
     }
   },
 ];
@@ -153,7 +154,7 @@ const Experience = () => {
                     </div>
 
                     {/* Achievements */}
-                    <div>
+                    <div className="mb-4">
                       <p className="text-xs text-muted-foreground mb-2">Key Achievements:</p>
                       <ul className="space-y-1">
                         {exp.extraInfo.achievements.map((achievement, i) => (
@@ -172,16 +173,24 @@ const Experience = () => {
                       </ul>
                     </div>
 
-                    {exp.extraInfo.certificateLink && (
-                      <a
-                        href={exp.extraInfo.certificateLink}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1 mt-4 text-xs text-primary hover:text-accent transition-colors"
+                    {/* Certificate Image */}
+                    {exp.extraInfo.certificateImage && (
+                      <motion.div
+                        initial={{ opacity: 0, y: 10 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.5, delay: 0.6 }}
+                        viewport={{ once: true }}
+                        className="mt-4"
                       >
-                        <ExternalLink className="h-3 w-3" />
-                        View Certificate
-                      </a>
+                        <p className="text-xs text-muted-foreground mb-2">Certificate of Completion:</p>
+                        <div className="rounded-lg overflow-hidden border border-border bg-white">
+                          <img
+                            src={exp.extraInfo.certificateImage}
+                            alt="Internship Certificate"
+                            className="w-full h-auto object-contain"
+                          />
+                        </div>
+                      </motion.div>
                     )}
                   </motion.div>
                 </motion.div>

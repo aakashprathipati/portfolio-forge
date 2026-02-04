@@ -53,9 +53,9 @@ const Hero = () => {
               transition={{ delay: 0.5 }}
               className="text-muted-foreground max-w-lg leading-relaxed"
             >
-              A technically driven professional with expertise across AI, cybersecurity, 
-              blockchain, cloud computing, and data science. Bridging technical depth 
-              with business impact.
+              I build software that behaves.
+              <br />
+              <span className="text-foreground/80">Under load. Under change. Under pressure.</span>
             </motion.p>
             
             <motion.div
