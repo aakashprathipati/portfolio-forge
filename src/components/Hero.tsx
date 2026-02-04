@@ -94,23 +94,14 @@ const Hero = () => {
               {/* Glow effect */}
               <div className="absolute inset-0 bg-gradient-primary rounded-full blur-2xl opacity-30 scale-110" />
               
-              {/* Image container */}
+              {/* Image container - more zoomed in */}
               <div className="relative w-72 h-72 md:w-96 md:h-96 rounded-full overflow-hidden border-4 border-primary/30 glow">
                 <img
                   src={profilePhoto}
                   alt="Aakash Prathipati"
-                  className="w-full h-full object-cover object-top"
+                  className="w-full h-full object-cover object-top scale-125"
                 />
               </div>
-              
-              {/* Floating badge */}
-              <motion.div
-                animate={{ y: [0, -10, 0] }}
-                transition={{ repeat: Infinity, duration: 3 }}
-                className="absolute -top-4 -right-4 bg-card border border-border rounded-lg px-4 py-2 shadow-lg z-0"
-              >
-                <p className="text-sm font-semibold text-primary">AI/ML</p>
-              </motion.div>
             </div>
           </motion.div>
         </div>

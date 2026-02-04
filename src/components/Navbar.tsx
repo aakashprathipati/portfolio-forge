@@ -34,10 +34,8 @@ const Navbar = () => {
     >
       <div className="container mx-auto max-w-6xl px-4">
         <div className="flex items-center justify-between h-16">
-          {/* Logo */}
-          <a href="#" className="text-2xl font-bold">
-            <span className="text-gradient">⟨/⟩</span>
-          </a>
+          {/* Spacer for layout balance */}
+          <div className="w-8" />
 
           {/* Desktop Nav */}
           <div className="hidden md:flex items-center gap-8">

@@ -1,6 +1,6 @@
-import { motion, AnimatePresence } from "framer-motion";
-import { Briefcase, Calendar, ChevronDown, ExternalLink } from "lucide-react";
-import { useState } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { Briefcase, Calendar, ExternalLink } from "lucide-react";
+import { useRef } from "react";
 
 const experiences = [
   {
@@ -26,11 +26,15 @@ const experiences = [
 ];
 
 const Experience = () => {
-  const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start end", "end start"]
+  });
 
-  const toggleExpand = (index: number) => {
-    setExpandedIndex(expandedIndex === index ? null : index);
-  };
+  // Transform scroll progress to control timeline indicator position
+  const indicatorY = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
+  const progressHeight = useTransform(scrollYProgress, [0, 0.5], ["0%", "100%"]);
 
   return (
     <section id="experience" className="py-24 px-4 bg-card/50">
@@ -42,57 +46,69 @@ const Experience = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <p className="text-primary font-mono text-sm tracking-wider mb-4">CAREER</p>
+          <div className="flex items-center justify-center gap-3 mb-4">
+            <p className="text-primary font-mono text-sm tracking-wider">CAREER</p>
+            <motion.span
+              animate={{ y: [0, -5, 0] }}
+              transition={{ repeat: Infinity, duration: 2 }}
+              className="px-3 py-1 bg-primary/20 text-primary text-xs font-semibold rounded-full border border-primary/30"
+            >
+              AI/ML
+            </motion.span>
+          </div>
           <h2 className="text-4xl md:text-5xl font-bold">
             Work <span className="text-gradient">Experience</span>
           </h2>
         </motion.div>
 
-        <div className="relative">
-          {/* Timeline line */}
-          <div className="absolute left-0 md:left-1/2 top-0 bottom-0 w-px bg-border md:-translate-x-1/2" />
+        <div ref={containerRef} className="relative">
+          {/* Timeline track */}
+          <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-1 bg-border/50 md:-translate-x-1/2 rounded-full overflow-hidden">
+            {/* Scroll progress fill */}
+            <motion.div
+              style={{ height: progressHeight }}
+              className="w-full bg-gradient-to-b from-primary to-accent rounded-full"
+            />
+          </div>
+
+          {/* Scroll indicator node */}
+          <motion.div
+            style={{ top: indicatorY }}
+            className="absolute left-4 md:left-1/2 w-4 h-4 md:-translate-x-1/2 -translate-x-1/2 z-20"
+          >
+            <div className="w-full h-full rounded-full bg-accent glow animate-pulse" />
+            <div className="absolute inset-0 rounded-full bg-accent/50 animate-ping" />
+          </motion.div>
 
           {experiences.map((exp, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: index * 0.2 }}
-              viewport={{ once: true }}
-              className={`relative flex flex-col md:flex-row gap-8 mb-12 ${
-                index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
-              }`}
+              viewport={{ once: true, margin: "-100px" }}
+              className="relative flex flex-col md:flex-row gap-8 mb-16"
             >
-              {/* Interactive Timeline dot */}
-              <motion.button
-                onClick={() => toggleExpand(index)}
-                whileHover={{ scale: 1.3 }}
-                whileTap={{ scale: 0.95 }}
-                className={`absolute left-0 md:left-1/2 w-5 h-5 rounded-full md:-translate-x-1/2 -translate-x-2 mt-6 cursor-pointer transition-all duration-300 z-10 ${
-                  expandedIndex === index 
-                    ? "bg-accent glow scale-125" 
-                    : "bg-primary glow hover:bg-accent"
-                }`}
-                title="Click to see more details"
-              >
-                <motion.div
-                  animate={{ scale: [1, 1.5, 1] }}
-                  transition={{ repeat: Infinity, duration: 2 }}
-                  className="absolute inset-0 rounded-full bg-primary/30"
-                />
-              </motion.button>
+              {/* Static timeline dot */}
+              <div className="absolute left-4 md:left-1/2 w-3 h-3 rounded-full bg-primary md:-translate-x-1/2 -translate-x-1 mt-8 z-10 border-2 border-background" />
 
               {/* Content */}
-              <div className={`ml-8 md:ml-0 md:w-1/2 ${index % 2 === 0 ? "md:pr-12 md:text-right" : "md:pl-12"}`}>
-                <div className="bg-card border border-border rounded-xl p-6 card-glow transition-all duration-300 hover:border-primary/50">
-                  <div className={`flex items-center gap-2 mb-3 ${index % 2 === 0 ? "md:justify-end" : ""}`}>
+              <div className="ml-12 md:ml-0 md:w-1/2 md:pr-16">
+                <motion.div
+                  whileInView={{ 
+                    boxShadow: "0 0 30px -10px hsl(200 100% 60% / 0.4)"
+                  }}
+                  viewport={{ once: false, margin: "-200px" }}
+                  className="bg-card border border-border rounded-xl p-6 transition-all duration-500 hover:border-primary/50"
+                >
+                  <div className="flex items-center gap-2 mb-3">
                     <Briefcase className="h-4 w-4 text-primary" />
                     <span className="text-primary font-mono text-sm">{exp.company}</span>
                   </div>
                   
                   <h3 className="text-xl font-bold mb-2">{exp.title}</h3>
                   
-                  <div className={`flex items-center gap-4 text-muted-foreground text-sm mb-4 ${index % 2 === 0 ? "md:justify-end" : ""}`}>
+                  <div className="flex items-center gap-4 text-muted-foreground text-sm mb-4">
                     <span className="flex items-center gap-1">
                       <Calendar className="h-4 w-4" />
                       {exp.period}
@@ -100,88 +116,75 @@ const Experience = () => {
                     <span>{exp.location}</span>
                   </div>
                   
-                  <ul className={`space-y-2 ${index % 2 === 0 ? "md:text-right" : ""}`}>
+                  <ul className="space-y-2 mb-6">
                     {exp.description.map((item, i) => (
                       <li key={i} className="text-muted-foreground text-sm flex items-start gap-2">
-                        <span className={`text-primary ${index % 2 === 0 ? "md:order-2" : ""}`}>▸</span>
+                        <span className="text-primary">▸</span>
                         <span>{item}</span>
                       </li>
                     ))}
                   </ul>
 
-                  {/* Expand button */}
-                  <button
-                    onClick={() => toggleExpand(index)}
-                    className={`mt-4 flex items-center gap-1 text-xs text-primary hover:text-accent transition-colors ${
-                      index % 2 === 0 ? "md:ml-auto" : ""
-                    }`}
+                  {/* Extra info - always visible with scroll reveal */}
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: 0.3 }}
+                    viewport={{ once: true, margin: "-50px" }}
+                    className="pt-4 border-t border-border"
                   >
-                    <span>{expandedIndex === index ? "Show less" : "Show more details"}</span>
-                    <motion.div
-                      animate={{ rotate: expandedIndex === index ? 180 : 0 }}
-                      transition={{ duration: 0.3 }}
-                    >
-                      <ChevronDown className="h-4 w-4" />
-                    </motion.div>
-                  </button>
+                    {/* Technologies */}
+                    <div className="mb-4">
+                      <p className="text-xs text-muted-foreground mb-2">Technologies Used:</p>
+                      <div className="flex flex-wrap gap-2">
+                        {exp.extraInfo.technologies.map((tech, i) => (
+                          <motion.span
+                            key={i}
+                            initial={{ opacity: 0, scale: 0.8 }}
+                            whileInView={{ opacity: 1, scale: 1 }}
+                            transition={{ duration: 0.3, delay: i * 0.1 }}
+                            viewport={{ once: true }}
+                            className="px-2 py-1 text-xs bg-primary/10 text-primary rounded-md"
+                          >
+                            {tech}
+                          </motion.span>
+                        ))}
+                      </div>
+                    </div>
 
-                  {/* Expanded content */}
-                  <AnimatePresence>
-                    {expandedIndex === index && (
-                      <motion.div
-                        initial={{ opacity: 0, height: 0 }}
-                        animate={{ opacity: 1, height: "auto" }}
-                        exit={{ opacity: 0, height: 0 }}
-                        transition={{ duration: 0.3 }}
-                        className="overflow-hidden"
+                    {/* Achievements */}
+                    <div>
+                      <p className="text-xs text-muted-foreground mb-2">Key Achievements:</p>
+                      <ul className="space-y-1">
+                        {exp.extraInfo.achievements.map((achievement, i) => (
+                          <motion.li
+                            key={i}
+                            initial={{ opacity: 0, x: -10 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            transition={{ duration: 0.3, delay: 0.5 + i * 0.1 }}
+                            viewport={{ once: true }}
+                            className="text-xs text-foreground/80 flex items-start gap-2"
+                          >
+                            <span className="text-accent">★</span>
+                            <span>{achievement}</span>
+                          </motion.li>
+                        ))}
+                      </ul>
+                    </div>
+
+                    {exp.extraInfo.certificateLink && (
+                      <a
+                        href={exp.extraInfo.certificateLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1 mt-4 text-xs text-primary hover:text-accent transition-colors"
                       >
-                        <div className={`mt-4 pt-4 border-t border-border ${index % 2 === 0 ? "md:text-right" : ""}`}>
-                          {/* Technologies */}
-                          <div className="mb-4">
-                            <p className="text-xs text-muted-foreground mb-2">Technologies Used:</p>
-                            <div className={`flex flex-wrap gap-2 ${index % 2 === 0 ? "md:justify-end" : ""}`}>
-                              {exp.extraInfo.technologies.map((tech, i) => (
-                                <span 
-                                  key={i} 
-                                  className="px-2 py-1 text-xs bg-primary/10 text-primary rounded-md"
-                                >
-                                  {tech}
-                                </span>
-                              ))}
-                            </div>
-                          </div>
-
-                          {/* Achievements */}
-                          <div>
-                            <p className="text-xs text-muted-foreground mb-2">Key Achievements:</p>
-                            <ul className={`space-y-1 ${index % 2 === 0 ? "md:text-right" : ""}`}>
-                              {exp.extraInfo.achievements.map((achievement, i) => (
-                                <li key={i} className="text-xs text-foreground/80 flex items-start gap-2">
-                                  <span className={`text-accent ${index % 2 === 0 ? "md:order-2" : ""}`}>★</span>
-                                  <span>{achievement}</span>
-                                </li>
-                              ))}
-                            </ul>
-                          </div>
-
-                          {exp.extraInfo.certificateLink && (
-                            <a
-                              href={exp.extraInfo.certificateLink}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className={`inline-flex items-center gap-1 mt-4 text-xs text-primary hover:text-accent transition-colors ${
-                                index % 2 === 0 ? "md:ml-auto" : ""
-                              }`}
-                            >
-                              <ExternalLink className="h-3 w-3" />
-                              View Certificate
-                            </a>
-                          )}
-                        </div>
-                      </motion.div>
+                        <ExternalLink className="h-3 w-3" />
+                        View Certificate
+                      </a>
                     )}
-                  </AnimatePresence>
-                </div>
+                  </motion.div>
+                </motion.div>
               </div>
             </motion.div>
           ))}
