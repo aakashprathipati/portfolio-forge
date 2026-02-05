@@ -74,10 +74,10 @@ const Contact = () => {
 
             {/* CTA */}
             <div className="flex flex-col justify-center items-center text-center">
-              <div className="p-6 sm:p-8 rounded-2xl bg-gradient-to-br from-primary/10 to-accent/10 border border-primary/20 w-full">
-                <Linkedin className="h-10 sm:h-12 w-10 sm:w-12 text-primary mx-auto mb-4" />
-                <h3 className="text-xl font-bold mb-2">Connect on LinkedIn</h3>
-                <p className="text-muted-foreground text-sm mb-6">
+              <div className="p-4 sm:p-8 rounded-2xl bg-gradient-to-br from-primary/10 to-accent/10 border border-primary/20 w-full">
+                <Linkedin className="h-8 sm:h-12 w-8 sm:w-12 text-primary mx-auto mb-2 sm:mb-4" />
+                <h3 className="text-lg sm:text-xl font-bold mb-1 sm:mb-2">Connect on LinkedIn</h3>
+                <p className="text-muted-foreground text-xs sm:text-sm mb-4 sm:mb-6">
                   Let's expand our professional networks
                 </p>
                 <Button 
