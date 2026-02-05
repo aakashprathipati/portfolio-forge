@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 
 const Contact = () => {
   return (
-    <section id="contact" className="py-24 px-4">
+    <section id="contact" className="py-24 px-4 sm:px-6">
       <div className="container mx-auto max-w-4xl">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -28,11 +28,11 @@ const Contact = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
           viewport={{ once: true }}
-          className="bg-card border border-border rounded-2xl p-4 sm:p-8 md:p-12"
+          className="bg-card border border-border rounded-2xl p-4 sm:p-8 md:p-12 mx-0"
         >
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid md:grid-cols-2 gap-6 sm:gap-8">
             {/* Contact Info */}
-            <div className="space-y-6">
+            <div className="space-y-4 sm:space-y-6">
               <a
                 href="mailto:aakashprathipaticore@gmail.com"
                 className="flex items-center gap-3 sm:gap-4 p-3 sm:p-4 rounded-xl bg-secondary/50 hover:bg-secondary transition-colors group"
@@ -73,15 +73,15 @@ const Contact = () => {
             </div>
 
             {/* CTA */}
-            <div className="flex flex-col justify-center items-center text-center space-y-6">
-              <div className="p-8 rounded-2xl bg-gradient-to-br from-primary/10 to-accent/10 border border-primary/20">
-                <Linkedin className="h-12 w-12 text-primary mx-auto mb-4" />
+            <div className="flex flex-col justify-center items-center text-center">
+              <div className="p-6 sm:p-8 rounded-2xl bg-gradient-to-br from-primary/10 to-accent/10 border border-primary/20 w-full">
+                <Linkedin className="h-10 sm:h-12 w-10 sm:w-12 text-primary mx-auto mb-4" />
                 <h3 className="text-xl font-bold mb-2">Connect on LinkedIn</h3>
                 <p className="text-muted-foreground text-sm mb-6">
                   Let's expand our professional networks
                 </p>
                 <Button 
-                  className="bg-gradient-primary hover:opacity-90 text-primary-foreground font-semibold px-8"
+                  className="bg-gradient-primary hover:opacity-90 text-primary-foreground font-semibold px-6 sm:px-8"
                   asChild
                 >
                   <a 
