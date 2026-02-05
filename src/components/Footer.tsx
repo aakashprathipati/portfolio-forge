@@ -1,14 +1,13 @@
-import { Linkedin, Mail, Heart } from "lucide-react";
+import { Linkedin, Mail } from "lucide-react";
 
 const Footer = () => {
   return (
     <footer className="py-8 px-4 border-t border-border">
       <div className="container mx-auto max-w-6xl">
         <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-          <div className="flex items-center gap-2 text-muted-foreground text-sm">
-            <span>© 2026 Aakash Prathipati. Made with</span>
-            <Heart className="h-4 w-4 text-destructive fill-destructive" />
-          </div>
+          <p className="text-muted-foreground text-sm">
+            © 2026 Aakash Prathipati. All rights reserved.
+          </p>
 
           <div className="flex items-center gap-4">
             <a
