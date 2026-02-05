@@ -28,44 +28,44 @@ const Contact = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
           viewport={{ once: true }}
-          className="bg-card border border-border rounded-2xl p-8 md:p-12"
+          className="bg-card border border-border rounded-2xl p-4 sm:p-8 md:p-12"
         >
           <div className="grid md:grid-cols-2 gap-8">
             {/* Contact Info */}
             <div className="space-y-6">
               <a
                 href="mailto:aakashprathipaticore@gmail.com"
-                className="flex items-center gap-4 p-4 rounded-xl bg-secondary/50 hover:bg-secondary transition-colors group"
+                className="flex items-center gap-3 sm:gap-4 p-3 sm:p-4 rounded-xl bg-secondary/50 hover:bg-secondary transition-colors group"
               >
-                <div className="p-3 rounded-lg bg-primary/10 group-hover:bg-primary/20 transition-colors">
+                <div className="p-2 sm:p-3 rounded-lg bg-primary/10 group-hover:bg-primary/20 transition-colors shrink-0">
                   <Mail className="h-5 w-5 text-primary" />
                 </div>
-                <div className="flex-1">
+                <div className="flex-1 min-w-0">
                   <p className="text-sm text-muted-foreground">Email</p>
-                  <p className="font-medium">aakashprathipaticore@gmail.com</p>
+                  <p className="font-medium text-sm sm:text-base truncate">aakashprathipaticore@gmail.com</p>
                 </div>
-                <ArrowUpRight className="h-5 w-5 text-muted-foreground group-hover:text-primary transition-colors" />
+                <ArrowUpRight className="h-5 w-5 text-muted-foreground group-hover:text-primary transition-colors shrink-0" />
               </a>
 
               <a
                 href="tel:+917730901750"
-                className="flex items-center gap-4 p-4 rounded-xl bg-secondary/50 hover:bg-secondary transition-colors group"
+                className="flex items-center gap-3 sm:gap-4 p-3 sm:p-4 rounded-xl bg-secondary/50 hover:bg-secondary transition-colors group"
               >
-                <div className="p-3 rounded-lg bg-accent/10 group-hover:bg-accent/20 transition-colors">
+                <div className="p-2 sm:p-3 rounded-lg bg-accent/10 group-hover:bg-accent/20 transition-colors shrink-0">
                   <Phone className="h-5 w-5 text-accent" />
                 </div>
-                <div className="flex-1">
+                <div className="flex-1 min-w-0">
                   <p className="text-sm text-muted-foreground">Phone</p>
                   <p className="font-medium">+91 7730901750</p>
                 </div>
-                <ArrowUpRight className="h-5 w-5 text-muted-foreground group-hover:text-accent transition-colors" />
+                <ArrowUpRight className="h-5 w-5 text-muted-foreground group-hover:text-accent transition-colors shrink-0" />
               </a>
 
-              <div className="flex items-center gap-4 p-4 rounded-xl bg-secondary/50">
-                <div className="p-3 rounded-lg bg-primary/10">
+              <div className="flex items-center gap-3 sm:gap-4 p-3 sm:p-4 rounded-xl bg-secondary/50">
+                <div className="p-2 sm:p-3 rounded-lg bg-primary/10 shrink-0">
                   <MapPin className="h-5 w-5 text-primary" />
                 </div>
-                <div>
+                <div className="min-w-0">
                   <p className="text-sm text-muted-foreground">Location</p>
                   <p className="font-medium">Vijayawada, Tadepalli, India</p>
                 </div>
