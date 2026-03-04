@@ -76,6 +76,12 @@ const Hero = () => {
               </Button>
               
               <Button variant="outline" size="icon" className="h-12 w-12 border-border hover:border-primary transition-colors" asChild>
+                <a href="https://github.com/aakashprathipati" target="_blank" rel="noopener noreferrer">
+                  <Github className="h-5 w-5" />
+                </a>
+              </Button>
+              
+              <Button variant="outline" size="icon" className="h-12 w-12 border-border hover:border-primary transition-colors" asChild>
                 <a href="mailto:aakashprathipaticore@gmail.com">
                   <Mail className="h-5 w-5" />
                 </a>
