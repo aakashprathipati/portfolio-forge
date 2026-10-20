@@ -3,23 +3,74 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/png" href="/favicon.png" />
-    <title>Aakash Prathipati | Portfolio</title>
-    <meta name="description" content="Portfolio of Aakash Prathipati - Software Engineer specializing in AI, cybersecurity, cloud computing, and data science." />
+    <link
+      rel="preload"
+      as="image"
+      href="/src/assets/profile-photo.jpg"
+      fetchpriority="high"
+    />
+    <link
+      rel="preload"
+      href="/fonts/dm-sans-latin.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="/fonts/manrope-latin.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="theme-color" content="#294c3d" />
+    <title>Aakash Prathipati — AI Engineer</title>
+    <meta
+      name="description"
+      content="AI Engineer Aakash Prathipati builds computer vision, generative AI, data engineering, and security analytics systems. Explore projects and experience."
+    />
     <meta name="author" content="Aakash Prathipati" />
+    <meta name="robots" content="index, follow" />
 
-    <meta property="og:title" content="Aakash Prathipati | Portfolio" />
-    <meta property="og:description" content="Portfolio of Aakash Prathipati - Software Engineer specializing in AI, cybersecurity, cloud computing, and data science." />
+    <meta property="og:title" content="Aakash Prathipati — AI Engineer" />
+    <meta
+      property="og:description"
+      content="AI Engineer Aakash Prathipati builds computer vision, generative AI, data engineering, and security analytics systems. Explore projects and experience."
+    />
     <meta property="og:type" content="website" />
-    <meta property="og:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
 
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:site" content="@AakashPrathipati" />
-    <meta name="twitter:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Aakash Prathipati ? AI Engineer" />
+    <meta
+      name="twitter:description"
+      content="AI Engineer Aakash Prathipati builds computer vision, generative AI, data engineering, and security analytics systems. Explore projects and experience."
+    />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Aakash Prathipati",
+        "jobTitle": "AI Engineer",
+        "sameAs": [
+          "https://github.com/aakashprathipati",
+          "https://www.linkedin.com/in/aakash-prathipati-431616344/"
+        ]
+      }
+    </script>
   </head>
 
   <body>
     <div id="root"></div>
+    <noscript
+      ><main class="project-placeholder">
+        <h1>Aakash Prathipati ? AI Engineer</h1>
+        <p>Enable JavaScript to browse this portfolio.</p>
+        <a class="text-link" href="mailto:aakashprathipatipvt@gmail.com"
+          >Email Aakash</a
+        >
+      </main></noscript
+    >
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

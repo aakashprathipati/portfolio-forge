@@ -1,73 +1,50 @@
-# Welcome to your Lovable project
+# Aakash Prathipati ? AI Engineer
 
-## Project info
+A resume-based portfolio built with React, TypeScript, and Vite. The current design uses a warm neutral palette, forest green accents, local fonts, and responsive layouts.
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
-
-## How can I edit this code?
-
-There are several ways of editing your application.
-
-**Use Lovable**
-
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
-
-Changes made via Lovable will be committed automatically to this repo.
-
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
+## Run locally
 
 ```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
+npm ci
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+Open http://localhost:5173. The development server binds to localhost and uses a strict port so another instance cannot silently switch to a different URL.
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+## Verify changes
 
-**Use GitHub Codespaces**
+```sh
+npm run check
+```
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+This runs strict TypeScript checks, lint with zero warnings, interaction tests, structural accessibility checks, palette contrast tests, a production build, and a local preview audit of application URLs and assets.
 
-## What technologies are used for this project?
+```sh
+npm run build
+npm run preview -- --host 127.0.0.1
+```
 
-This project is built with:
+The production output is `dist/`. Configure the eventual host to return `index.html` for client-side routes such as `/projects/flood-mapping`.
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+## Edit content
 
-## How can I deploy this project?
+- `src/data/profile.ts`: contact details, social links, experience, education, technical skills, engineering approach, and certification links.
+- `src/data/projects.ts`: the four resume projects.
+- `src/pages/Portfolio.tsx`: home-page sections.
+- `src/pages/Project.tsx`: minimal project placeholders.
+- `src/portfolio.css`: layout, colors, responsive rules, reduced-motion and print styles.
+- `public/fonts/`: locally served fonts and their SIL Open Font Licenses.
 
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
+Projects currently open dedicated placeholder pages. Set a project's `url` field in `src/data/projects.ts` to its absolute hosted URL when it is published. Cards then open the hosted application, and old local project URLs show a link to it. Empty or unsupported URL values stay on the placeholder. The project diagrams are conceptual illustrations rather than application screenshots or benchmark outputs.
 
-## Can I connect a custom domain to my Lovable project?
+## Content decisions
 
-Yes, you can!
+The content follows the supplied resume, with certificate titles checked against the certificate images. Oracle is dated 2026 because the resume and certificate disagree on the month. Existing credential links, the requested portrait, and the updated contact email are retained. Unsupported accuracy, processing-time, and publication claims from the original site are not used.
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+The original resume PDF is not included in public assets. No resume download is shown.
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+## Verification limits
+
+The automated accessibility audit uses jsdom, which does not render browser layout. Contrast tests calculate ratios from the actual CSS palette. Production smoke checks verify routes and assets over HTTP; they do not replace a visual browser review. The computer-use tool stopped because it could not verify the current browser URL, so the latest layout has not received a direct browser visual review in this session.
+
+Use npm for this checkout; `package-lock.json` is the current lockfile. The inherited Bun lockfile is not part of the documented workflow. See `QA.md` for the current audit scope and limits.

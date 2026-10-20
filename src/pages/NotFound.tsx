@@ -1,24 +1,33 @@
-import { useLocation } from "react-router-dom";
-import { useEffect } from "react";
+import { ArrowLeft } from "lucide-react";
+import { Link } from "react-router-dom";
+import { usePageMeta } from "@/hooks/use-page-meta";
 
-const NotFound = () => {
-  const location = useLocation();
-
-  useEffect(() => {
-    console.error("404 Error: User attempted to access non-existent route:", location.pathname);
-  }, [location.pathname]);
-
+export default function NotFound() {
+  usePageMeta({
+    title: "Page not found — Aakash Prathipati",
+    description:
+      "This page could not be found. Return to Aakash Prathipati's AI engineering portfolio to explore projects, experience, and credentials.",
+    noIndex: true,
+  });
   return (
-    <div className="flex min-h-screen items-center justify-center bg-muted">
-      <div className="text-center">
-        <h1 className="mb-4 text-4xl font-bold">404</h1>
-        <p className="mb-4 text-xl text-muted-foreground">Oops! Page not found</p>
-        <a href="/" className="text-primary underline hover:text-primary/90">
-          Return to Home
-        </a>
+    <main id="main" tabIndex={-1} className="project-placeholder">
+      <Link to="/" className="text-link">
+        <ArrowLeft size={18} aria-hidden="true" /> Back to portfolio
+      </Link>
+      <div>
+        <p className="eyebrow">404 / PAGE NOT FOUND</p>
+        <h1>This page isn’t here.</h1>
+        <p>
+          The address may have changed. Return to the portfolio to explore the
+          projects, experience, and credentials.
+        </p>
+        <span className="placeholder-mark" aria-hidden="true">
+          ✳
+        </span>
       </div>
-    </div>
+      <Link to="/#projects" className="text-link">
+        Explore projects <span aria-hidden="true">↗</span>
+      </Link>
+    </main>
   );
-};
-
-export default NotFound;
+}
