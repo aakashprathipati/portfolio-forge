@@ -21,7 +21,11 @@ SPA fallback configuration is included in `public/_redirects` for Netlify-compat
 
 ## Projects
 
-The four resume projects are defined in `src/data/projects.ts`. Each currently links to a matching `/projects/:slug` placeholder rendered by `src/pages/Project.tsx`. Set each project's `url` field to its hosted address when available; both cards and old placeholder URLs will then point to it. The diagrams are illustrative, not screenshots of the applications.
+The four resume projects are defined in `src/data/projects.ts`. Each links to a complete `/projects/:slug` case study rendered by `src/pages/Project.tsx`. Detailed narratives and stacks are in `src/data/case-studies.ts`, based on the resume and supplied handwritten implementation notes. Each page includes workflow architecture, design rationale, a validation plan, limitations, technical references, and a next-project link.
+
+`src/components/ProjectExplorer.tsx` contains four local examples backed by `src/data/project-examples.ts`: segmentation selection, a schematic flood intersection query, ETL reconciliation and key validation, and editable access-log parsing with an event chart. All fixtures are explicitly synthetic. No model, map, IP lookup, clinical service, or external API runs from these panels.
+
+Set each project's `url` field to its hosted application address when available. Cards will use the hosted destination; the case study keeps an Open project action. Leave it null to keep cards on the case studies. Illustrations are not application screenshots, and no measured benchmark is invented.
 
 ## Content
 

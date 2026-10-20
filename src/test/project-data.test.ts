@@ -3,7 +3,7 @@ import { projects, projectDestination } from "@/data/projects";
 import { certifications, navigation } from "@/data/profile";
 
 describe("project destination configuration", () => {
-  it("keeps the four unhosted projects on their own placeholder pages", () => {
+  it("keeps the four unhosted projects on their own case study pages", () => {
     expect(projects).toHaveLength(4);
     for (const project of projects)
       expect(projectDestination(project)).toEqual({
@@ -29,7 +29,7 @@ describe("project destination configuration", () => {
     "javascript:alert(1)",
     "data:text/html,test",
     "file:///local",
-  ])("keeps an incomplete or unsupported URL on the placeholder: %s", (url) => {
+  ])("keeps an incomplete or unsupported URL on the case study: %s", (url) => {
     expect(projectDestination({ ...projects[0], url })).toEqual({
       href: "/projects/pathology-diagnostics",
       hosted: false,

@@ -66,10 +66,7 @@ export default function SiteHeader() {
       }}
     >
       <a href="#top" className="wordmark" aria-label="Aakash Prathipati, home">
-        aakash<span aria-hidden="true"> / </span>prathipati
-        <span className="brand-dot" aria-hidden="true">
-          .
-        </span>
+        Aakash Prathipati
       </a>
       <nav className="desktop-nav" aria-label="Main navigation">
         {navigation.map((item) => (

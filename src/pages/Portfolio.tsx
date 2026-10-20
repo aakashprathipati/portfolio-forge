@@ -5,7 +5,7 @@ import {
   education,
   experience,
   profile,
-  toolkit,
+  skillAreas,
 } from "@/data/profile";
 import SiteHeader from "@/components/SiteHeader";
 import ContactSection from "@/components/ContactSection";
@@ -188,24 +188,16 @@ export default function Portfolio() {
         >
           <SectionHeading
             id="skills-title"
-            label="03 / TECHNICAL TOOLKIT"
+            label="03 / EXPERTISE"
             title="Technical skills"
           />
-          <div className="toolkit-grid">
-            {toolkit.map((group, index) => (
-              <article className="toolkit-card" key={group.title}>
-                <span className="toolkit-number" aria-hidden="true">
-                  /{String(index + 1).padStart(2, "0")}
-                </span>
-                <h3>{group.title}</h3>
-                <ul>
-                  {group.items.map((item) => (
-                    <li key={item}>{item}</li>
-                  ))}
-                </ul>
-              </article>
+          <ul className="skill-areas" aria-label="Technical skill areas">
+            {skillAreas.map((area) => (
+              <li key={area}>
+                <h3>{area}</h3>
+              </li>
             ))}
-          </div>
+          </ul>
         </section>
 
         <section

@@ -43,7 +43,7 @@ describe("page metadata", () => {
       document.querySelector('meta[name="viewport"]')?.getAttribute("content"),
     ).not.toMatch(/user-scalable\s*=\s*no|maximum-scale\s*=\s*1/);
   });
-  it("marks temporary project pages noindex and restores home indexing on return", () => {
+  it("indexes completed project case studies and restores home metadata on return", () => {
     render(
       <MemoryRouter
         future={flags}
@@ -55,7 +55,7 @@ describe("page metadata", () => {
         </Routes>
       </MemoryRouter>,
     );
-    expect(robots()).toBe("noindex, follow");
+    expect(robots()).toBe("index, follow");
     expect(document.title).toBe(
       "AI-Powered Pathology Diagnostic System — Aakash Prathipati",
     );

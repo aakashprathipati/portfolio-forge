@@ -19,7 +19,7 @@ const renderHome = () =>
   );
 
 describe("portfolio navigation and contact", () => {
-  it("provides a working destination for all four project placeholders", () => {
+  it("provides a working destination for all four project case studies", () => {
     renderHome();
     for (const project of projects) {
       expect(screen.getByRole("link", { name: project.name })).toHaveAttribute(
@@ -78,7 +78,7 @@ describe("portfolio navigation and contact", () => {
 });
 describe("project routes", () => {
   it.each(projects)(
-    "renders the $slug placeholder and a return link",
+    "renders the $slug case study and a return link",
     (project) => {
       vi.spyOn(window, "scrollTo").mockImplementation(() => {});
       render(
@@ -95,7 +95,7 @@ describe("project routes", () => {
         project.name,
       );
       expect(
-        screen.getByText("This project page is coming soon."),
+        screen.getByRole("heading", { name: "Explore the mechanics." }),
       ).toBeInTheDocument();
       expect(
         screen.getByRole("link", { name: /Back to selected work/ }),

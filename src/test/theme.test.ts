@@ -2,6 +2,10 @@ import { describe, expect, it } from "vitest";
 import { readFileSync } from "node:fs";
 import { resolve } from "node:path";
 const css = readFileSync(resolve(process.cwd(), "src/portfolio.css"), "utf8");
+const caseCss = readFileSync(
+  resolve(process.cwd(), "src/case-study.css"),
+  "utf8",
+);
 function token(name: string) {
   const match = css.match(new RegExp(`${name}:\\s*(#[\\da-f]{6})`, "i"));
   if (!match) throw new Error(`Missing color token: ${name}`);
@@ -41,4 +45,23 @@ describe("design palette contrast", () => {
   it("keeps the large accent heading above the 3:1 large-text threshold", () => {
     expect(ratio("--accent-heading", "--paper")).toBeGreaterThanOrEqual(3);
   });
+  it.each(["study", "pathology", "flood", "pipeline"])(
+    "keeps the %s case-study text and accent colors at AA contrast",
+    (theme) => {
+      const block = caseCss.match(
+        new RegExp(`\\.case-${theme}\\s*\\{([^}]+)`),
+      )![1];
+      const soft = block.match(/--case-soft:\s*(#[\da-f]{6})/i)![1];
+      const accent = block.match(/--case-accent:\s*(#[\da-f]{6})/i)![1];
+      for (const [foreground, background] of [
+        [token("--muted"), soft],
+        [accent, token("--paper")],
+      ]) {
+        const [low, high] = [luminance(foreground), luminance(background)].sort(
+          (a, b) => a - b,
+        );
+        expect((high + 0.05) / (low + 0.05)).toBeGreaterThanOrEqual(4.5);
+      }
+    },
+  );
 });

@@ -78,48 +78,13 @@ export const education = [
   },
 ];
 
-export const toolkit = [
-  {
-    title: "AI & machine learning",
-    items: [
-      "PyTorch",
-      "TensorFlow",
-      "Computer vision",
-      "U-Net",
-      "CNN",
-      "NLP",
-      "LLMs",
-      "RAG",
-      "LangChain",
-      "CrewAI",
-    ],
-  },
-  {
-    title: "Data engineering & BI",
-    items: [
-      "Python",
-      "SQL / PostgreSQL",
-      "Pandas",
-      "NumPy",
-      "Alteryx",
-      "Advanced ETL",
-      "Alteryx macros",
-      "Power BI",
-      "Data wrangling",
-    ],
-  },
-  {
-    title: "Architecture & operations",
-    items: [
-      "MVC",
-      "Docker",
-      "Kubernetes",
-      "Django ORM",
-      "Decoupled model layers",
-      "htop",
-      "psutil",
-    ],
-  },
+export const skillAreas = [
+  "Full Stack Web Development",
+  "AI & Machine Learning",
+  "Data Analysis",
+  "Data Engineering",
+  "DevOps",
+  "Cloud Computing",
 ];
 
 export const certifications = [

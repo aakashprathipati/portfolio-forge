@@ -263,7 +263,7 @@ describe("automated accessibility audit", () => {
     },
     15000,
   );
-  it("has no structural accessibility violations on a project placeholder", async () => {
+  it("has no structural accessibility violations on a project case study", async () => {
     vi.spyOn(HTMLCanvasElement.prototype, "getContext").mockReturnValue(null);
     render(
       <MemoryRouter

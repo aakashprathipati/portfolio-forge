@@ -1,4 +1,4 @@
-# Portfolio audit — 20 October 2026
+# Portfolio audit — 21 October 2026
 
 ## Content
 
@@ -15,22 +15,28 @@ The latest 30-item issue/improvement record is in `WEBSITE_REVIEW.md`. Finance a
 
 ## Functional checks
 
-The completed combined check passed 60 tests, strict TypeScript checks, zero-warning lint, the production build, seven application URLs, and 15 static assets. The production entry measured approximately 62.8 kB of JavaScript and 6.0 kB of CSS after gzip compression.
+The completed combined check passed 80 tests, strict TypeScript checks, zero-warning lint, the production build, seven application URLs, and 15 static assets. The production entry measured approximately 76.7 kB of JavaScript and 9.0 kB of CSS after gzip compression.
 
 `npm run check` covers strict TypeScript compilation, zero-warning lint, behavior and accessibility tests, the production build, and production HTTP/asset verification.
 
 The automated tests cover:
 
 - Navigation anchors, mobile disclosure, Escape, outside click, and desktop resize focus.
-- Project placeholders, browser Back/Forward, scroll/focus restoration, changed viewport dimensions, and malformed fragments.
+- Four complete case-study routes, next-project navigation, browser Back/Forward, scroll/focus restoration, changed viewport dimensions, and malformed fragments.
 - The configured email, successful copying, unavailable/denied clipboard access, and overlapping requests.
 - Credential links, lazy certificate covers, and an eager portrait.
 - Future hosted project URLs, unsupported URL schemes, and stable unique IDs.
-- Home/project/not-found metadata and placeholder `noindex` behavior.
-- Structural accessibility on the home page, open navigation, and project placeholders.
+- Home/project/not-found metadata: completed case studies are indexed; unknown pages remain `noindex`.
+- Structural accessibility on the home page, open navigation, and all four project case studies.
 - WCAG AA contrast thresholds for the main text/background pairs using actual CSS tokens.
 
 Production verification checks seven application URLs, static asset responses and byte lengths, local font signatures and licenses, absence of public PDFs, and compressed entry-asset budgets.
+
+## Case-study additions
+
+The four project pages now expand the supplied resume and handwritten implementation notes into architecture, stack responsibilities, design rationale, validation priorities, limits, and next steps. Four synthetic, browser-local examples demonstrate segmentation thresholds, point-in-polygon queries, ETL reconciliation, and log parsing with status counts. No backend or model service is implied to run inside these examples.
+
+Tests exercise duplicate-key conflicts, record reconciliation, polygon boundaries, malformed log lines, input caps, changing chart values, next-project navigation, and structural accessibility on every case-study route. The case-study accent and supporting-text pairs also pass calculated 4.5:1 contrast checks. No application performance benchmarks or clinical results are fabricated.
 
 ## Other evidence
 

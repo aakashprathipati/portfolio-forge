@@ -16,7 +16,7 @@ export function projectDestination(project: PortfolioProject) {
       if (url.protocol === "https:" || url.protocol === "http:")
         return { href: url.href, hosted: true };
     } catch {
-      /* Keep incomplete URL edits on the local placeholder. */
+      /* Keep incomplete URL edits on the local case study. */
     }
   }
   return { href: `/projects/${project.slug}`, hosted: false };
@@ -29,7 +29,7 @@ export const projects: PortfolioProject[] = [
     category: "01 / COMPUTER VISION",
     description:
       "Pixel-level delineation of pathological biomarkers with nnU-Net and PyTorch. An AI diagnostic layer turns raw scans into insights for clinical decision support.",
-    tags: ["nnU-Net", "PyTorch", "Medical imaging"],
+    tags: ["nnU-Net", "PyTorch", "Django REST"],
     theme: "pathology",
     url: null,
     label: "SCAN → SEGMENT → INTERPRET",
@@ -40,7 +40,7 @@ export const projects: PortfolioProject[] = [
     category: "02 / GEOSPATIAL AI",
     description:
       "DeepLabV3+ with Atrous Spatial Pyramid Pooling maps flood zones from multispectral satellite data. Synthetic Aperture Radar (SAR) imagery supports tracking even through cloud cover.",
-    tags: ["DeepLabV3+", "ASPP", "SAR imagery"],
+    tags: ["DeepLabV3+", "PostGIS", "SAR imagery"],
     theme: "flood",
     url: null,
     label: "OBSERVE → MAP → RESPOND",
@@ -51,7 +51,7 @@ export const projects: PortfolioProject[] = [
     category: "03 / DATA ENGINEERING",
     description:
       "A Llama 3 schema-on-read pipeline transforms unstructured datasets into relational architectures. A staging-to-production framework preserves data lineage with Django ORM and Pandas.",
-    tags: ["Llama 3", "Django ORM", "Pandas"],
+    tags: ["Llama 3", "Pandas", "Django ORM"],
     theme: "pipeline",
     url: null,
     label: "INGEST → NORMALIZE → VALIDATE",
@@ -62,7 +62,7 @@ export const projects: PortfolioProject[] = [
     category: "04 / SECURITY ANALYTICS",
     description:
       "Regex-based ingestion brings fragmented logs into a unified threat-tracking schema. Semantic intelligence separates attack vectors from routine anomalies and produces readable security audits.",
-    tags: ["Python", "Regex", "Semantic intelligence"],
+    tags: ["Python", "Regex", "Llama 3"],
     theme: "security",
     url: null,
     label: "PARSE → CORRELATE → EXPLAIN",
